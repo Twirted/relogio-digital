@@ -83,19 +83,3 @@ body.dark #clock {
     0 0 20px var(--neon-color),
     0 0 40px var(--neon-color);
 }
-
-.weather-info {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  font-size: 16px;
-  font-weight: bold;
-  color: #333;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.weather-info img {
-  width: 32px;
-  height: 32px;
-}
