@@ -52,3 +52,36 @@ function applyAutoTheme() {
 
 setInterval(updateClock, 1000);
 updateClock(); // atualizar ao carregar
+
+const neonColorInput = document.getElementById("neon-color");
+const neonBtn = document.getElementById("neon-btn");
+const neonPreview = document.getElementById("neon-preview");
+
+// Atualiza a cor do preview e do neon
+function setNeonColor(color) {
+  document.documentElement.style.setProperty("--neon-color", color);
+  neonPreview.style.background = color;
+}
+
+// Ao clicar no botão, abre o seletor nativo
+neonBtn.addEventListener("click", () => {
+  neonColorInput.click();
+});
+
+// Atualiza cor ao escolher
+neonColorInput.addEventListener("input", (e) => {
+  setNeonColor(e.target.value);
+});
+
+// Mantém cor ao recarregar
+if (localStorage.getItem("neonColor")) {
+  setNeonColor(localStorage.getItem("neonColor"));
+  neonColorInput.value = localStorage.getItem("neonColor");
+} else {
+  setNeonColor(neonColorInput.value);
+}
+
+neonColorInput.addEventListener("change", (e) => {
+  localStorage.setItem("neonColor", e.target.value);
+  setNeonColor(e.target.value);
+});
